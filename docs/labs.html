@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторные работы - Портфолио Бондаревой Ирины</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #1b5e20;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 25px;
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #4caf50;
+            color: white;
+        }
+
+        .content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .content h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #4caf50;
+            padding-bottom: 10px;
+        }
+
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .lab-card {
+            background: #f1f8e9;
+            border-left: 5px solid #4caf50;
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76,175,80,0.2);
+        }
+
+        .lab-card h3 {
+            color: #2e7d32;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+
+        .lab-card .number {
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .lab-card .topic {
+            color: #558b2f;
+            font-weight: 500;
+            margin: 10px 0;
+        }
+
+        .lab-card .description {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .status.completed {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status.in-progress {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 8px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2e7d32;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #558b2f;
+            background: white;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                text-align: center;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌿 Лабораторные работы</h1>
+            <p>Мои учебные проекты по программированию</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about/index.html">Об авторе</a></li>
+                <li><a href="labs.html">Лабораторные работы</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <h2>Список лабораторных работ</h2>
+            <p>Здесь представлены все лабораторные работы, выполненные в рамках учебного курса. Каждая работа содержит цель, задание, код и выводы.</p>
+
+            <div class="labs-grid">
+                <div class="lab-card">
+                    <div class="number">Лабораторная работа №1</div>
+                    <h3>Введение в Git и GitHub</h3>
+                    <div class="topic">Тема: Системы контроля версий</div>
+                    <div class="description">Знакомство с Git: инициализация репозитория, коммиты, ветвление, работа с удаленными репозиториями.</div>
+                    <span class="status completed">✓ Выполнено</span>
+                    <br>
+                    <a href="lab1/index.html" class="btn">Подробнее →</a>
+                </div>
+
+                <div class="lab-card">
+                    <div class="number">Лабораторная работа №2</div>
+                    <h3>Создание сайта на MkDocs</h3>
+                    <div class="topic">Тема: Генераторы статических сайтов</div>
+                    <div class="description">Установка MkDocs, настройка конфигурации, создание структуры страниц, выбор темы оформления.</div>
+                    <span class="status completed">✓ Выполнено</span>
+                    <br>
+                    <a href="lab2/index.html" class="btn">Подробнее →</a>
+                </div>
+
+                <div class="lab-card">
+                    <div class="number">Лабораторная работа №3</div>
+                    <h3>HTML и CSS верстка</h3>
+                    <div class="topic">Тема: Основы веб-разработки</div>
+                    <div class="description">Создание HTML-страниц, стилизация с помощью CSS, адаптивный дизайн, работа с формами.</div>
+                    <span class="status in-progress">⏳ В процессе</span>
+                    <br>
+                    <a href="lab3/index.html" class="btn">Подробнее →</a>
+                </div>
+
+                <div class="lab-card">
+                    <div class="number">Лабораторная работа №4</div>
+                    <h3>Деплой на GitHub Pages</h3>
+                    <div class="topic">Тема: Публикация сайтов</div>
+                    <div class="description">Настройка GitHub Pages, автоматическая сборка, публикация сайта-портфолио в интернете.</div>
+                    <span class="status in-progress">⏳ В процессе</span>
+                    <br>
+                    <a href="lab4/index.html" class="btn">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Бондарева Ирина | Сайт-портфолио</p>
+        </footer>
+    </div>
+</body>
+</html>
