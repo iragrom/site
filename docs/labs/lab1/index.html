@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #282a36;
-            color: #f8f8f2;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #1b5e20;
             line-height: 1.6;
         }
 
@@ -25,8 +25,8 @@
         }
 
         header {
-            background: linear-gradient(135deg, #6272a4, #44475a);
-            color: #f8f8f2;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: white;
             padding: 40px 0;
             text-align: center;
             border-radius: 15px;
@@ -41,19 +41,20 @@
         .back-link {
             display: inline-block;
             margin-top: 15px;
-            color: #50fa7b;
+            color: #c8e6c9;
             text-decoration: none;
         }
 
         .back-link:hover {
-            color: #f1fa8c;
+            color: white;
         }
 
         nav {
-            background: #44475a;
+            background: #ffffff;
             border-radius: 10px;
             margin-bottom: 30px;
             overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav ul {
@@ -70,29 +71,29 @@
         nav a {
             display: block;
             padding: 15px 25px;
-            color: #f8f8f2;
+            color: #2e7d32;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
         }
 
         nav a:hover {
-            background: #50fa7b;
-            color: #282a36;
+            background: #4caf50;
+            color: white;
         }
 
         .content {
-            background: #44475a;
+            background: white;
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             margin-bottom: 30px;
         }
 
         .content h2 {
-            color: #50fa7b;
+            color: #2e7d32;
             margin: 25px 0 15px 0;
-            border-bottom: 2px solid #ff79c6;
+            border-bottom: 2px solid #4caf50;
             padding-bottom: 8px;
         }
 
@@ -101,26 +102,24 @@
         }
 
         .content h3 {
-            color: #f1fa8c;
+            color: #388e3c;
             margin: 20px 0 10px 0;
         }
 
         pre {
-            background: #282a36;
+            background: #2d2d2d;
             color: #f8f8f2;
             padding: 15px;
             border-radius: 8px;
             overflow-x: auto;
             margin: 15px 0;
-            border: 1px solid #6272a4;
         }
 
         code {
-            background: #6272a4;
+            background: #e8f5e9;
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', monospace;
-            color: #f8f8f2;
         }
 
         pre code {
@@ -129,11 +128,11 @@
         }
 
         .task-list {
-            background: #6272a4;
+            background: #f1f8e9;
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
-            border: 1px solid #ff79c6;
+            border: 1px solid #c8e6c9;
         }
 
         .task-list li {
@@ -143,8 +142,8 @@
         footer {
             text-align: center;
             padding: 20px;
-            color: #6272a4;
-            background: #282a36;
+            color: #558b2f;
+            background: white;
             border-radius: 10px;
         }
 
@@ -170,7 +169,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🧛 Лабораторная работа №1</h1>
+            <h1>🌿 Лабораторная работа №1</h1>
             <p>Создание и развертывание статического сайта на базе MkDocs с публикацией на GitHub Pages</p>
             <a href="../labs.html" class="back-link">← Вернуться к списку лабораторных</a>
         </header>
@@ -206,7 +205,6 @@
             <h2>3. Код</h2>
 
             <h3>3.1. Структура страниц</h3>
-            <p>Создана следующая структура страниц сайта-портфолио:</p>
             <pre><code>site/
 ├── source/
 │   ├── mkdocs.yml
@@ -220,35 +218,12 @@
 │           └── lab4.md       # Лабораторная работа №4
 └── docs/                     # Собранный сайт (публикуется на GitHub Pages)</code></pre>
 
-            <p><strong>Содержание страниц:</strong></p>
-            <ul>
-                <li><strong>Главная страница (index.md):</strong> приветствие, информация о сайте, быстрая навигация.</li>
-                <li><strong>Страница «Об авторе» (about.md):</strong> информация о студенте, навыки, контакты.</li>
-                <li><strong>Лабораторные работы (labs/):</strong> отдельные страницы для каждой работы с единым шаблоном отчета (цель, задание, код, выводы).</li>
-            </ul>
-
-            <p><strong>Пример содержимого страницы лабораторной работы:</strong></p>
-            <pre><code># Лабораторная работа №1
-## Создание и развертывание статического сайта на базе MkDocs
-
-## 1. Цель работы
-[текст цели]
-
-## 2. Задание
-[текст задания]
-
-## 3. Код
-[код программы]
-
-## 4. Выводы
-[выводы по работе]</code></pre>
-
             <h2>4. Выводы</h2>
-            <p>В ходе выполнения работы был создан публичный репозиторий на GitHub для размещения сайта-портфолио, который открывается по адресу <a href="https://iragrom.github.io/site/" target="_blank" style="color: #50fa7b;">https://iragrom.github.io/site/</a> и содержит разделы "Лабораторные работы" и "Об авторе". Я научилась использовать MkDocs для генерации статических сайтов и организовывать структуру проекта. Тема Dracula была выбрана, поскольку она легко настраивается через CSS, имеет приятную темную цветовую гамму, снижающую нагрузку на зрение, и позволяет полностью адаптировать внешний вид под свой дизайн благодаря гибкой системе цветовых акцентов.</p>
+            <p>В ходе выполнения работы был создан публичный репозиторий на GitHub для размещения сайта-портфолио, который открывается по адресу <a href="https://iragrom.github.io/site/" target="_blank">https://iragrom.github.io/site/</a> и содержит разделы "Лабораторные работы" и "Об авторе". Я научилась использовать MkDocs для генерации статических сайтов и организовывать структуру проекта. Тема Material была выбрана, поскольку она легко настраивается через конфигурационный файл, поддерживает светлую и темную темы, а также позволяет полностью адаптировать внешний вид под свой дизайн благодаря гибкой системе палитр и цветовых схем.</p>
         </div>
 
         <footer>
-            <p>© 2025 Бондарева Ирина | Сайт-портфолио | Тема Dracula</p>
+            <p>© 2025 Бондарева Ирина | Сайт-портфолио</p>
         </footer>
     </div>
 </body>
