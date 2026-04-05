@@ -1,11 +1,332 @@
-<!-- В навигации лабораторной работы -->
-<nav>
-    <ul>
-        <li><a href="../../index.html">Главная</a></li>
-        <li><a href="../../about/index.html">Об авторе</a></li>
-        <li><a href="../../labs.html">Лабораторные работы</a></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №2 - Численные вычисления и анализ данных с использованием NumPy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Ссылка назад к списку лабораторных -->
-<a href="../../labs.html" class="back-link">← Вернуться к списку лабораторных</a>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #1b5e20;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #c8e6c9;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        nav {
+            background: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 25px;
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #4caf50;
+            color: white;
+        }
+
+        .content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .content h2 {
+            color: #2e7d32;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #4caf50;
+            padding-bottom: 8px;
+        }
+
+        .content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content h3 {
+            color: #388e3c;
+            margin: 20px 0 10px 0;
+        }
+
+        .info-block {
+            background: #f1f8e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            background: #e8f5e9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+        }
+
+        .task-list {
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #c8e6c9;
+        }
+
+        .task-list li {
+            margin: 10px 0;
+            margin-left: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            color: #2e7d32;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #558b2f;
+            background: white;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                text-align: center;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Главная</a></li>
+                <li><a href="../../about/index.html">Об авторе</a></li>
+                <li><a href="../../labs.html">Лабораторные работы</a></li>
+            </ul>
+        </nav>
+
+        <a href="../../labs.html" class="back-link">← Вернуться к списку лабораторных</a>
+
+        <header>
+            <h1>Лабораторная работа №2</h1>
+            <p>Численные вычисления и анализ данных с использованием NumPy</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Бондарева Ирина | 2026</p>
+        </header>
+
+        <div class="content">
+            <h2> Описание задачи</h2>
+            <p>Цель лабораторной работы — освоить основные возможности библиотек <strong>NumPy</strong>, <strong>Pandas</strong>, <strong>Matplotlib</strong> и <strong>Seaborn</strong> для выполнения численных вычислений, статистического анализа данных и визуализации результатов.</p>
+
+            <div class="task-list">
+                <h3>Основные задачи:</h3>
+                <ul>
+                    <li><strong>Создание и обработка массивов:</strong> создание векторов и матриц, изменение формы массивов, транспонирование.</li>
+                    <li><strong>Векторные операции:</strong> сложение, умножение на скаляр, поэлементное умножение, скалярное произведение.</li>
+                    <li><strong>Матричные операции:</strong> умножение матриц, вычисление определителя, нахождение обратной матрицы, решение систем линейных уравнений.</li>
+                    <li><strong>Статистический анализ:</strong> загрузка данных из CSV, вычисление статистических показателей (среднее, медиана, стандартное отклонение, перцентили), нормализация данных.</li>
+                    <li><strong>Визуализация:</strong> построение гистограммы распределения, тепловой карты корреляции и линейного графика.</li>
+                </ul>
+            </div>
+
+            <h2> Решение задачи</h2>
+
+            <h3>1. Подготовка окружения</h3>
+            <p>Для работы был создан виртуальное окружение и установлены необходимые зависимости:</p>
+            <pre><code>pip install numpy matplotlib seaborn pandas pytest</code></pre>
+            <p>В начале файла <code>main.py</code> настроен неинтерактивный бэкенд Matplotlib для корректной работы с сохранением графиков:</p>
+            <pre><code>import matplotlib
+matplotlib.use('Agg')  # Использование Agg backend для сохранения без отображения</code></pre>
+
+            <h3>2. Реализация функций</h3>
+
+            <div class="info-block">
+                <h4> Создание массивов</h4>
+                <p><code>create_vector()</code> — создание вектора от 0 до 9 с помощью <code>np.arange(10)</code>.</p>
+                <p><code>create_matrix()</code> — генерация случайной матрицы 5x5 с помощью <code>np.random.rand(5,5)</code>.</p>
+                <p><code>reshape_vector()</code> — изменение формы массива (10,) → (2,5) через <code>np.reshape()</code>.</p>
+            </div>
+
+            <div class="info-block">
+                <h4> Векторные и матричные операции</h4>
+                <p>Все операции реализованы с использованием векторизации NumPy:</p>
+                <ul>
+                    <li><code>vector_add()</code> — поэлементное сложение через оператор <code>+</code></li>
+                    <li><code>scalar_multiply()</code> — умножение вектора на число через <code>*</code></li>
+                    <li><code>dot_product()</code> — скалярное произведение через <code>np.dot()</code></li>
+                    <li><code>matrix_multiply()</code> — умножение матриц через <code>np.matmul()</code> или оператор <code>@</code></li>
+                    <li><code>matrix_determinant()</code> — определитель через <code>np.linalg.det()</code></li>
+                    <li><code>matrix_inverse()</code> — обратная матрица через <code>np.linalg.inv()</code></li>
+                    <li><code>solve_linear_system()</code> — решение СЛАУ через <code>np.linalg.solve()</code></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h4> Статистический анализ</h4>
+                <p><code>load_dataset()</code> — загрузка данных из CSV с помощью <code>pd.read_csv()</code> и преобразование в NumPy массив.</p>
+                <p><code>statistical_analysis()</code> — вычисление статистических показателей.</p>
+                <p><code>normalize_data()</code> — Min-Max нормализация по формуле <code>(x - min) / (max - min)</code> с обработкой случая, когда все значения одинаковы.</p>
+            </div>
+
+            <div class="info-block">
+                <h4> Визуализация</h4>
+                <p><strong>plot_histogram():</strong> построение гистограммы распределения оценок по математике с использованием <code>plt.hist()</code>.</p>
+                <p><strong>plot_heatmap():</strong> построение тепловой карты корреляции с помощью <code>sns.heatmap()</code>.</p>
+                <p><strong>plot_line():</strong> построение линейного графика зависимости оценок студентов.</p>
+                <p>Все графики сохраняются в папку <code>plots/</code> с закрытием фигур через <code>plt.close()</code> для предотвращения утечек памяти.</p>
+            </div>
+
+            <h2> Результаты тестирования</h2>
+            <p>Все 17 тестов успешно пройдены:</p>
+            <div style="text-align: center; margin: 20px 0;">
+    <img src="screenshot_tests.png" alt="Результаты выполнения тестов" style="max-width: 100%; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <p style="color: #666; margin-top: 10px;">Рисунок 1 — Результаты прохождения всех 17 тестов</p>
+            </div>
+            <h2> Структура проекта</h2>
+            <pre><code>lab2/
+├── data/
+│   └── students_scores.csv      # Данные оценок студентов
+├── plots/
+│   ├── math_histogram.png       # Гистограмма распределения
+│   ├── correlation_heatmap.png  # Тепловая карта корреляции
+│   └── student_scores_line.png  # Линейный график
+├── main.py                      # Основной код с функциями
+└── test.py                      # Тесты для проверки</code></pre>
+
+            <h2> Используемые библиотеки</h2>
+            <ul>
+                <li><strong>NumPy</strong> — базовые численные операции, работа с массивами и матрицами</li>
+                <li><strong>Pandas</strong> — загрузка и обработка CSV данных</li>
+                <li><strong>Matplotlib</strong> — построение гистограмм и линейных графиков</li>
+                <li><strong>Seaborn</strong> — построение тепловых карт</li>
+                <li><strong>Pytest</strong> — модульное тестирование функций</li>
+            </ul>
+
+            <h2> Выводы</h2>
+            <p>В ходе выполнения лабораторной работы были освоены ключевые возможности библиотек научных вычислений Python. Основные результаты:</p>
+            <ul>
+                <li>Реализованы все требуемые функции с использованием векторизации NumPy</li>
+                <li>Созданы визуализации, демонстрирующие распределение данных и корреляционные связи</li>
+                <li>Настроено корректное сохранение графиков в файлы без отображения окон</li>
+                <li>Разрешены проблемы с Git-конфликтами и настройкой окружения</li>
+                <li>Все тесты успешно пройдены, код соответствует стандартам PEP 8</li>
+            </ul>
+            <p>Полученные навыки применимы для решения задач анализа данных, машинного обучения и научных вычислений.</p>
+        </div>
+
+        <footer>
+            <p>© 2026 Бондарева Ирина | Сайт-портфолио</p>
+        </footer>
+    </div>
+</body>
+</html>
